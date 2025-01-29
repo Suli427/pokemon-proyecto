@@ -1,0 +1,14 @@
+<h3>Catch Random Pokémon</h3>
+<div class="pokeballs">
+    <button class="catch-button" (click)="catchPokemon();"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a0c1885e-fa60-4115-b8c8-53876a6e3943/dfk82y6-05daf7b3-890e-4099-a183-34f03be93b90.png/v1/fill/w_1280,h_1265/master_ball_by_win1945_dfk82y6-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2NSIsInBhdGgiOiJcL2ZcL2EwYzE4ODVlLWZhNjAtNDExNS1iOGM4LTUzODc2YTZlMzk0M1wvZGZrODJ5Ni0wNWRhZjdiMy04OTBlLTQwOTktYTE4My0zNGYwM2JlOTNiOTAucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.SOOgY5HMRzGq9DWIEL2hhhNlC-6Meqq0SUSi_G7Nu-Y"></button>
+    <button class="catch-button" (click)="catchPokemon();"><img src="https://i.pinimg.com/originals/d1/1e/3b/d11e3bd51661d0e00c52a84ebdbed1f4.png"></button>
+    <button class="catch-button" (click)="catchPokemon();"><img src="https://i.pinimg.com/originals/09/da/92/09da926c2b94d95008a9e3b2f60bfdd3.png"></button>
+</div>
+
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+        <p>{{ modalMessage }}</p>
+        <button class="action-button" (click)="goBack()">Aceptar</button>
+        <button class="action-button" (click)="closeModal()">Cerrar</button>
+    </div>
+</div>

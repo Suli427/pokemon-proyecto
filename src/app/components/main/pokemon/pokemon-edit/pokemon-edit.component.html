@@ -1,0 +1,18 @@
+<div class="pokemon-edit-container">
+    <h3>Pokémon Edit</h3>
+    <div *ngIf="pokemon" class="pokemon-edit-card">
+      <form [formGroup]="form" (submit)="editPokemon()">
+        <div class="info-container">
+          <label>Nombre: </label>
+          <input #pokemonName value="{{ pokemon.name }}" formControlName="name"/><br>
+          <label>Tipo: </label>
+          <select #pokemonType>
+            <option *ngFor="let type of tiposPokemon" [value] = "type">{{type}}</option>
+          </select><br>
+          <label>Objeto: </label>
+          <input #pokemonItem value="{{ pokemon.item }}" formControlName="item"/><br>
+          <button #saveButtonPokemon><img src="https://www.pikpng.com/pngl/b/161-1611070_master-ball-8-bit-pixel-art-pokemon-clipart.png"> Guardar</button>
+        </div>
+      </form>
+    </div>
+</div>

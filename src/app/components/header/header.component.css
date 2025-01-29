@@ -1,0 +1,60 @@
+header {
+    text-align: center;
+    background-color: rgb(214, 76, 76);
+    position: relative; /* Necesario para que el pseudo-elemento se posicione correctamente */
+    padding: 20px 0; /* Espaciado superior e inferior para el header */
+    border-radius: 0 0 20px 10px; /* Para que coincida con el borde redondeado del header */
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+    margin-right: 0.5px;
+}
+
+nav {
+    display: inline-block;
+    padding: 10px;
+    position: relative; /* Agregado para que el pseudo-elemento se posicione dentro del nav */
+    z-index: 1; /* Asegúrate de que el nav esté por encima de la línea */
+    border-radius: 25px;
+    padding: 3px;
+    border: 5px solid black;
+    background-color: white;
+}
+
+header::after {
+    content: ''; /* Necesario para que el pseudo-elemento aparezca */
+    width: 100%; /* La línea ocupará todo el ancho */
+    height: 5px; /* Grosor de la línea */
+    background-color: black; /* Color negro de la línea */
+    position: absolute; /* Posicionamiento absoluto dentro de la caja */
+    top: 40px; /* Coloca la línea justo debajo del nav, ajusta el espacio si es necesario */
+    left: 0; /* Alinea la línea al borde izquierdo */
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    width: 99.8%;
+    height: 50%;
+    background-color: white;
+    top: 45px;
+    left: 0;
+    z-index: 0;
+    border-radius: 0 0 20px 10px; /* Para que coincida con el borde redondeado del header */
+    border-bottom: 5px solid black;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+nav button {
+    margin: 0 10px; /* Espaciado entre los botones */
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    background: none;
+    border: none;
+}
+
+body{
+    background-color: #F4978E;
+}

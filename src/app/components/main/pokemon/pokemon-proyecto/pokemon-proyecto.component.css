@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+h3{
+    padding: 20px 0;
+    margin-top: 20px;
+    height: auto;
+    border: 5px solid black;
+    border-radius: 50px;
+    background-color: white;
+    text-align: center;
+}
+
+div{
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+}
+
+p{
+    background-color: white;
+    border-radius: 50px;
+    border: 3px solid lightgray;
+    box-shadow: 2px 5px 1px rgba(0, 0, 0, 0.5);
+    padding: 5px 20px;
+}
+
+.delete-button,  .detail-button{
+    text-transform: uppercase;
+    box-shadow: 0 1px 0 #000000;
+    margin: 0 5px;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid gray;
+    border-radius: 5px;
+    float: right;
+}
+
+.delete-button:active, .detail-button:active{
+    box-shadow: none;
+    transform: translateY(1px);
+}
+.overflow{
+    height: 600px;
+    overflow-y: auto;
+}
+
+.p-no-hay-pokemon{
+    font-size: 20px;
+    padding-bottom: 20px;
+}

@@ -1,0 +1,17 @@
+<h3>PC Pokémon</h3>
+<div>
+    <div class="no-hay-pokemon">
+        <p *ngIf="pokemons.length === 0" class="p-no-hay-pokemon">No hay pokémon en el pc<br><br>
+            <img class="img-pikachu" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3ddb0b6b-64de-41ee-9526-b4b4f0f15f50/dhzldsl-a5405142-ebd9-42eb-9d78-c32106b2051c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNkZGIwYjZiLTY0ZGUtNDFlZS05NTI2LWI0YjRmMGYxNWY1MFwvZGh6bGRzbC1hNTQwNTE0Mi1lYmQ5LTQyZWItOWQ3OC1jMzIxMDZiMjA1MWMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.QgVB-Nbyo4Mv_u123x1UkMxydy7aTR5-V722nu6fdBc" width="300px">
+        </p>
+    </div>
+    <div class="overflow">
+        <p *ngFor="let pokemon of pokemons; let i = index">
+            <img class="btn-image" src="https://i.pinimg.com/originals/32/eb/23/32eb230b326ee3c76e64f619a06f6ebb.png" width="14px">
+                {{pokemon.name}} | Tipo: {{pokemon.type}} | Objeto: {{pokemon.item}}
+            <button class="delete-button" (click)="deletePokemon(i)">Eliminar</button>
+            <button class="detail-button" (click)="viewPokemon(pokemon.id)">Detalles</button>
+        </p>
+    </div>
+</div>
+

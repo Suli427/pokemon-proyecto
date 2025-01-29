@@ -1,0 +1,116 @@
+h3{
+    padding: 20px 0;
+    margin-top: 20px;
+    height: auto;
+    border: 5px solid black;
+    border-radius: 50px;
+    background-color: white;
+    text-align: center;
+}
+
+div{
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+
+.catch-button{
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+    animation: vibrar 2s infinite;
+    padding: 0 30px;
+}
+
+@keyframes vibrar {
+    0% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(5deg);
+    }
+    40% {
+        transform: rotate(-5deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.catch-button:focus {
+    animation: girar 4s;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(3240deg);
+    }
+}
+
+.pokeballs img{
+    width: 250px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: aparecer 0.3s ease-in-out;
+}
+
+.action-button {
+    background-color: #FF6B6B;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid #FF4747;
+    border-radius: 5px;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    animation: vibrar 2s infinite;
+}
+
+.action-button:hover {
+    background-color: #FF4747;
+    transform: scale(1.05); /* Ligera ampliación al pasar el cursor */
+}
+
+@keyframes aparecer {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

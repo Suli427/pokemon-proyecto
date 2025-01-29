@@ -1,0 +1,12 @@
+<div class="pokemon-detail-container">
+    <h3>Pokémon Details</h3>
+    <div *ngIf="pokemon" class="pokemon-detail-card">
+      <div class="info-container">
+        <h4>{{ pokemon.name }}</h4>
+        <p><strong>Tipo:</strong> {{ pokemon.type }}</p>
+        <p><strong>Objeto:</strong> {{ pokemon.item }}</p>
+        <button (click)="viewEditPokemon(pokemon.id)"><img src="https://www.pikpng.com/pngl/b/255-2554492_pokeball-pixel-png-download-ultra-ball-pixel-png.png" width="10px"> Editar</button><br>
+        <button routerLink="/list"><img src="https://cdn-icons-png.flaticon.com/512/391/391112.png"> Volver a la lista</button>
+      </div>
+    </div>
+</div>
