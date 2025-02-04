@@ -1,6 +1,6 @@
 export class pokemonModel{
-    id!: number
-    name!: string
-    type!: string
-    item!: string
+    id_pokemon!: number
+    nombre_pokemon!: string
+    tipo_pokemon!: string
+    item_pokemon!: string
 }

@@ -8,9 +8,9 @@
     <div class="overflow">
         <p *ngFor="let pokemon of pokemons; let i = index">
             <img class="btn-image" src="https://i.pinimg.com/originals/32/eb/23/32eb230b326ee3c76e64f619a06f6ebb.png" width="14px">
-                {{pokemon.name}} | Tipo: {{pokemon.type}} | Objeto: {{pokemon.item}}
-            <button class="delete-button" (click)="deletePokemon(i)">Eliminar</button>
-            <button class="detail-button" (click)="viewPokemon(pokemon.id)">Detalles</button>
+                {{pokemon.nombre_pokemon}} | Tipo: {{pokemon.tipo_pokemon}} | Objeto: {{pokemon.item_pokemon}}
+            <button class="delete-button" (click)="deletePokemon(pokemon.id_pokemon)">Eliminar</button>
+            <button class="detail-button" (click)="viewPokemon(pokemon.id_pokemon)">Detalles</button>
         </p>
     </div>
 </div>

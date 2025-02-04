@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { pokemonModel } from '../components/main/pokemon/model/pokemon.model';
-import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 
@@ -9,12 +9,29 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PokemonServiceService {
-  private baseUrl = 'https://55d7-79-151-55-38.ngrok-free.app:80/api/alumno1/alumnos.php?table='; // Base URL
+  private baseUrl = 'https://c74f4156107e.ngrok.app/api/marc/api.php?table=pokemons'; // Base URL
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('Error en la API:', error);
+    let errorMessage = 'Ocurrió un error inesperado';
+
+    if (error.status === 404) {
+      errorMessage = 'No se encontró la API. Verifica la URL.';
+    } else if (error.status === 500) {
+      errorMessage = 'Error en el servidor. Revisa la API.';
+    } else if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error de red: ${error.error.message}`;
+    } else {
+      errorMessage = `Código de error: ${error.status}, Mensaje: ${error.message}`;
+    }
+
+    return throwError(() => new Error(errorMessage));
+  }
 
   constructor(private http: HttpClient, private router: Router) { }
   
-  getPokemons(): Observable<any> {
-    return this.http.get(this.baseUrl);
+  getPokemons(): Observable<pokemonModel[]> { 
+    return this.http.get<pokemonModel[]>(`${this.baseUrl}`).pipe(catchError(this.handleError));
   }
 
   addPokemon(pokemon: pokemonModel): Observable<any> {
@@ -24,19 +41,23 @@ export class PokemonServiceService {
 
   deletePokemon(pokemonId: number): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = { pokemon_id: pokemonId };
-    return this.http.delete(this.baseUrl, { headers, body });
+    // return this.http.request('DELETE', `${this.baseUrl}&id=${pokemonId}`, { headers  });
+    return this.http.delete(`${this.baseUrl}&id=${pokemonId}`, { headers }).pipe(
+      (res) => { console.log("Pokemon eliminado con exito"); return res},
+      catchError(this.handleError)
+    );
+
   }
   editPokemon(updatedPokemon: pokemonModel): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put(`${this.baseUrl}/${updatedPokemon.id}`, updatedPokemon, { headers });
+    return this.http.put(`${this.baseUrl}&id=${updatedPokemon.id_pokemon}`, updatedPokemon, { headers });
   }
   getItemById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.baseUrl}&id=${id}`);
   }
 
   addPokemonRandom(id: number){
-    return this.http.get(`${this.baseUrl}pokemons/${id}`);
+    return this.http.get(`${this.baseUrl}&id=${id}`);
   }
 
   navigateTo(id: number, url: string){

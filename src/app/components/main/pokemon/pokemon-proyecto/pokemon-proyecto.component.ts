@@ -13,7 +13,7 @@ import { pokemonModel } from '../model/pokemon.model';
 })
 export class PokemonProyectoComponent implements OnInit{
 
-  pokemons!: Array<pokemonModel>;
+  pokemons: pokemonModel[]=[];
 
   editingIndex: number | null = null;
   dialog: any;
@@ -21,14 +21,25 @@ export class PokemonProyectoComponent implements OnInit{
   constructor(private PokemonServiceService: PokemonServiceService, private router: Router){}
 
   ngOnInit(): void {
-    this.PokemonServiceService.getPokemons().subscribe((data) => {
-      this.pokemons = data;
-    });
+    this.cargarDatos()
+
+  }
+
+  cargarDatos(){
+    this.PokemonServiceService.getPokemons().subscribe(
+      (data: pokemonModel[]) => {
+        this.pokemons = data;
+      }
+    );
   }
   
-
-  deletePokemon(index: number){
-    this.PokemonServiceService.deletePokemon(index);
+  deletePokemon(id: number){
+    this.PokemonServiceService.deletePokemon(id).subscribe(response => {
+      if(response){
+        this.cargarDatos()
+      }
+    
+    });
   }
 
   viewPokemon(id: number){
